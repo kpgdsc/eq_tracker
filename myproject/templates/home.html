@@ -3,10 +3,12 @@
 
 <div class="jumbotron">
   {% if current_user.is_authenticated %}
-    <p>Hi {{ current_user.username }}!</p>
+    <h3>Hi {{ current_user.username }}!</h3>
   {% else %}
-    <p>Please login or register!</p>
+    <h3>Please login or register!</h3>
   {% endif %}
 </div>
 
+<img src="static/stock2.jpg" alt="Stocks">
+<br>
 {% endblock %}

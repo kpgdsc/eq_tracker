@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, FloatField
 from wtforms.validators import DataRequired,Email,EqualTo
 from wtforms import ValidationError
-from myproject.models import User
+from myproject.models import User, Stock
 
 
 class LoginForm(FlaskForm):
@@ -29,6 +29,34 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('Sorry, that username is already taken!')
 
 class StockForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    name = StringField('Name', validators=[DataRequired()])
+    code = StringField('Code', validators=[DataRequired()])
+    fair_price = FloatField('Fair Price',  validators=[DataRequired()])
+    submit = SubmitField('Add')
 
-    submit = SubmitField('Close')
+    def validate_name(self, field):
+        # Check if not None for that user email!
+        if Stock.query.filter_by(name=field.data).first():
+            raise ValidationError('Stock is already present!')
+
+    def validate_code(self, field):
+        # Check if not None for that user email!
+        if Stock.query.filter_by(code=field.data).first():
+            raise ValidationError('Stock is already present!')
+
+class EditStockForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    code = StringField('Code', validators=[DataRequired()])
+    fair_price = FloatField('Fair Price',  validators=[DataRequired()])
+    submit = SubmitField('Update')
+
+
+    def validate_name(self, field):
+        # Check if not None for that user email!
+        if Stock.query.filter_by(name=field.data).first():
+            raise ValidationError('Stock is already present!')
+
+    def validate_code(self, field):
+        # Check if not None for that user email!
+        if Stock.query.filter_by(code=field.data).first():
+            raise ValidationError('Stock is already present!')

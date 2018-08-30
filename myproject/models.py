@@ -44,7 +44,7 @@ class Stock(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(64), unique=True, index=True)
-    code = db.Column(db.String(16))
+    code = db.Column(db.String(16), unique=True)
     fair_price = db.Column(db.Float)
     target_price = db.Column(db.Float)
     market_price = db.Column(db.Float)
@@ -54,7 +54,7 @@ class Stock(db.Model, UserMixin):
 
 
 
-    def __init__(self, name, code, fair_price, target_price,market_price,gain=0.0,txn_price=0.0,quantity=0):
+    def __init__(self, name, code, fair_price, target_price=0.0,market_price=0.0,gain=0.0,txn_price=0.0,quantity=0):
         self.name = name
         self.code = code
         self.fair_price = fair_price

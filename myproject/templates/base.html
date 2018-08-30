@@ -22,6 +22,9 @@
   </li>
     {% if current_user.is_authenticated %}
     <li class="nav-link"><a href="{{ url_for('stocks') }}">Stocks</a></li>
+    <li class="nav-link"><a href="{{ url_for('add') }}">Add Stock</a></li>
+    <li class="nav-link"><a href="{{ url_for('edit_stock') }}">Edit Stock</a></li>
+    <li class="nav-link"><a href="{{ url_for('delete_stock') }}">Delete Stock</a></li>
     <li class="nav-link"><a href="{{ url_for('logout') }}">Log out</a></li>
     {% else %}
     <li class="nav-link"><a href="{{ url_for('login') }}">Log in</a></li>
@@ -34,6 +37,18 @@
 </nav>
 <container>
   <br>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-success" role="alert">
+      <ul class=flashes>
+      {% for message in messages %}
+        <li class=flashes> {{ message }}</li>
+      {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  {% endwith %}
+  
     {% block content %}
 
     {% endblock %}
@@ -42,9 +57,11 @@
 
 <nav class="navbar fixed-bottom navbar-light" style="background-color: #e3f2fd;">
 
-    <a class="footer" href="{{ url_for('home')}}"> &copy: 2018 kpgCool</a></span>
+    <a class="footer" href="{{ url_for('home')}}"> &copy; 2018 kpgCool</a></span>
 
 </nav>
+<br>
+
 <!-- Footer -->
 
 

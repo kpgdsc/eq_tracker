@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+<h3> Update Stock</h3>
+  <form method="POST">
+      {# This hidden_tag is a CSRF security feature. #}
+      {{ form.hidden_tag() }}
+  <br>
+
+      {{ form.name.label }}  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;{{ form.name() }}&nbsp; &nbsp;
+      {% for error in form.name.errors %}
+             <span style="color: red;">{{ error }}</span>
+             {% endfor %}<br>
+      {{ form.code.label }} &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;{{ form.code() }} &nbsp; &nbsp;
+      {% for error in form.code.errors %}
+             <span style="color: red;">{{ error }}</span>
+             {% endfor %}<br>
+      {{ form.fair_price.label }}&nbsp; &nbsp;&nbsp; &nbsp; {{ form.fair_price() }}&nbsp; &nbsp;
+      <br>
+
+
+      <br>
+      {{ form.submit() }}
+      <br>
+    </form>
+</div>
+
+{% endblock %}
