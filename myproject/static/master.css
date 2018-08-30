@@ -1,0 +1,65 @@
+
+<style>
+
+form {
+  background-color: LightGray;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+li a:hover {
+    <!-- background-color: SlateBlue;
+    color: orange; -->
+}
+.footer {
+  position: relative;
+left: 50%;
+}
+
+.err_message {
+  color: Tomato;
+  text-align:center;
+  text-decoration: underline;
+}
+
+.centered {
+	margin: auto;
+	width: 20%;
+}
+
+.thick-border {
+	border: 3px solid black;
+	border-collapse: collapse;
+  text-align: center;
+}
+
+table {
+  border: 3px solid black;
+	border-collapse: collapse;
+  text-align: center;
+  color: Tomato;
+}
+
+th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+
+
+</style>
